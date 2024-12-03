@@ -33,13 +33,17 @@ function startPlay() {
     }, 60000);
   }
 }
-for(let i=0;i<hole.length;i++){
-  hole[i].addEventListener('click',function(){
-    if(hole[i].hasChildNodes() && !disabled){
-     score.textContent=Number(score.textContent)+1
+for (let i = 0; i < hole.length; i++) {
+  hole[i].addEventListener("click", function () {
+    if (hole[i].hasChildNodes() && !disabled) {
+      score.textContent = Number(score.textContent) + 1;
+    } 
+    else if (!hole[i].hasChildNodes()) {
+      score.textContent = Number(score.textContent) - 1;
+      hole[i].style.backgroundColor = "red";
+      setTimeout(() => {
+        hole[i].style.backgroundColor = "";
+      }, 150);
     }
-    else if(!hole[i].hasChildNodes()){
-      score.textContent=Number(score.textContent)-1 
-    }
-  })
+  });
 }
