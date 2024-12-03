@@ -22,8 +22,7 @@ body {
 }
 
 .game {
-  background: url("/images/background.png");
-  background-position: center;
+  background: url("/images/background.png") center no-repeat;
   background-size: cover;
   width: 100%;
   height: 70vh;
@@ -31,6 +30,10 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  cursor: url("./images/hammer-be.png"), auto;
+}
+.game:active {
+  cursor: url("./images/hammer-af.png"), auto;
 }
 .section {
   border: 1px solid black;
@@ -38,7 +41,6 @@ body {
   height: 50%;
   display: flex;
   justify-content: center;
-  align-items: center;
   contain: paint;
 }
 .img {
@@ -46,4 +48,13 @@ body {
   width: 100%;
   height: 100%;
   border-radius: 50%;
+  animation: intro 300ms linear;
+}
+@keyframes intro {
+  from {
+    transform: translatey(50px);
+  }
+  to {
+    transform: translatey(0px);
+  }
 }

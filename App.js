@@ -3,6 +3,9 @@ let score = document.querySelector(".score");
 let Time = document.querySelector(".timer");
 let disabled = false;
 let progress = false;
+// sound effect
+let pop = document.querySelector("#pop");
+let fail = document.querySelector("#fail");
 
 document.addEventListener("dragstart", function (event) {
   event.preventDefault(); // Prevent dragging image
@@ -18,8 +21,9 @@ function addPic() {
 }
 function startPlay() {
   if (!progress) {
+    score.textContent = 0;
     let countD = setInterval(() => {
-      Time.textContent = Number(Time.textContent) - 1;
+    Time.textContent = Number(Time.textContent) - 1;
     }, 1000); //decereasing Time every one sec
 
     progress = true; //used for perventing double execution
@@ -37,9 +41,10 @@ for (let i = 0; i < hole.length; i++) {
   hole[i].addEventListener("click", function () {
     if (hole[i].hasChildNodes() && !disabled) {
       score.textContent = Number(score.textContent) + 1;
-    } 
-    else if (!hole[i].hasChildNodes()) {
+      pop.play();
+    } else if (!hole[i].hasChildNodes() && !disabled) {
       score.textContent = Number(score.textContent) - 1;
+      fail.play();
       hole[i].style.backgroundColor = "red";
       setTimeout(() => {
         hole[i].style.backgroundColor = "";
