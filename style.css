@@ -8,13 +8,27 @@ body {
   -webkit-user-drag: none; /* Prevent dragging in WebKit browsers */
 }
 .info-container {
-  height: 30vh;
+  height: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   font-size: 20px;
   background-color: rgb(187, 255, 197);
+}
+.lvl-con {
+  height: 10vh;
+  background: linear-gradient(43deg, #474bff 0%, #3300ff 50%, #bc48ff 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btns {
+  margin: 5px 10px;
+  padding: 5px 15px;
+  border-radius: 10px;
+  box-shadow: 0 7px 10px;
+  cursor: pointer;
 }
 .start-btn {
   padding: 5px 15px;

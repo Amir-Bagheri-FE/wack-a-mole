@@ -19,21 +19,22 @@ function addPic() {
   let random = Math.floor(Math.random() * hole.length);
   hole[random].append(mole);
 }
-function startPlay() {
+function startPlay(n) {
   if (!progress) {
     score.textContent = 0;
     let countD = setInterval(() => {
-    Time.textContent = Number(Time.textContent) - 1;
+      Time.textContent = Number(Time.textContent) - 1;
     }, 1000); //decereasing Time every one sec
 
     progress = true; //used for perventing double execution
-    let interval = setInterval(addPic, 1000);
+    let interval = setInterval(addPic, n);
     setTimeout(() => {
       clearInterval(interval);
       clearInterval(countD);
       progress = false;
       disabled = true;
       Time.textContent = 60;
+      alert(`finall score is: ${score.textContent}`);
     }, 60000);
   }
 }
@@ -42,7 +43,7 @@ for (let i = 0; i < hole.length; i++) {
     if (hole[i].hasChildNodes() && !disabled) {
       score.textContent = Number(score.textContent) + 1;
       pop.play();
-    } else if (!hole[i].hasChildNodes() && !disabled) {
+    } else if (!hole[i].hasChildNodes() && !disabled && progress) {
       score.textContent = Number(score.textContent) - 1;
       fail.play();
       hole[i].style.backgroundColor = "red";
